@@ -5,8 +5,7 @@
 
 class Telescope : public Observer{
     public:
-        using Observer::Observer;
-        void update(Observable *obs);
+        void update(bool data);
 };
 
 #endif

@@ -1,23 +1,17 @@
-#ifndef OBSERVABLE_H
-#define OBSERVABLE_H
+#pragma once
 
-#include "observer.h"
+class Observer;
+
 #include <vector>
 
 class Observable{
     public:
-        Observable();
-        static void addObserver(Observer *obs);
-        static void deleteObserver(Observer *obs);
-        bool getState();
-        void setState(bool newState);
-        static const bool SHINING = 1;
-        static const bool DARK = 0;
+        virtual ~Observable() = default;
+        void addObserver(Observer *obs);
+        void deleteObserver(Observer *obs);
+        void notify(bool data);
     
     private:
-        bool state;
-        void notify();
-        static std::vector<Observer> listObservers;
+        
+        static std::vector<Observer*> listObservers;
 };
-
-#endif

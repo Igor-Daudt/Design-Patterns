@@ -5,8 +5,8 @@
 
 class Observer{
     public:
-        Observer();
-        virtual void update(Observable *obs) = 0;
+        virtual void update(bool data) = 0;
+        virtual ~Observer() = default;
 };
 
 #endif

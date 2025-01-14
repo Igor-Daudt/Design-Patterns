@@ -1,29 +1,20 @@
 #include "observable.h"
 #include <iostream>
 #include <bits/stdc++.h>
+#include "observer.h"
 
-Observable::Observable(){
-}
+std::vector<Observer*> Observable::listObservers;
 
-void Observable::notify(){
-    for(Observer &i : this->listObservers){
-        i.update(this);
+void Observable::notify(bool data){
+    for(Observer *i : this->listObservers){
+        i->update(data);
     }
 }
 
-bool Observable::getState(){
-    return state;
-}
-
-void Observable::setState(bool newState){
-    this->state = newState;
-    this->notify();
-}
-
 void Observable::addObserver(Observer *obs){
-    listObservers.push_back(*obs);
+    listObservers.push_back(obs);
 }
 
 void Observable::deleteObserver(Observer *obs){
-    listObservers.erase(std::find(listObservers.begin(), listObservers.end(), *obs));
+    listObservers.erase(std::find(listObservers.begin(), listObservers.end(), obs));
 }

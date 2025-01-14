@@ -1,8 +1,9 @@
 #include "telescope.h"
 #include <iostream>
+#include "star.h"
 
-void Telescope::update(Observable *obs){
-    if(obs->getState() == obs->SHINING){
-        std::cout << "Telescope pointing at " << obs << std::endl;
+void Telescope::update(bool data){
+    if(data == Star::SHINING){
+        std::cout << "Telescope pointing at star" << std::endl;
     }
 }
